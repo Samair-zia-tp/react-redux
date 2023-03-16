@@ -7,8 +7,8 @@ const Counter = () => {
   const dispatch = useDispatch(); // it exposes a dispatch function which we can execute
 
   //we pass a function to useSelector which will receive a state managed by redux and then we return the part of the state we need to extract
-  const counter = useSelector((state) => state.counter);
-  const show = useSelector((state) => state.showCounter);
+  const counter = useSelector((state) => state.counter.counter);
+  const show = useSelector((state) => state.counter.showCounter);
 
   const toggleCounterHandler = () => {
     dispatch(counterActions.toggleCounter());
