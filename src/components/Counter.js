@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import { counterActions } from "../store";
 
 import classes from "./Counter.module.css";
 
@@ -10,19 +11,21 @@ const Counter = () => {
   const show = useSelector((state) => state.showCounter);
 
   const toggleCounterHandler = () => {
-    dispatch({ type: "toggle" });
+    dispatch(counterActions.toggleCounter());
   };
 
   const incrementHandler = () => {
-    dispatch({ type: "increment" });
+    dispatch(counterActions.increment());// executing our action function here
   };
 
   const decrementHandler = () => {
-    dispatch({ type: "decrement" });
+    dispatch(counterActions.decrement());
   };
 
   const increaseHandler = () => {
-    dispatch({ type: "increase", amount: 10 });
+    // dispatch({ type: "increase", amount: 10 });
+    dispatch(counterActions.increase(10)); 
+    // to this method we pass our payload data eg an object with property value pair or just the number we want to increase here , to extract this value. React toolkit automatically create action object which it dispatches , this will look like this {type: SOME_IDENTIFIER, payload: 10} anything we pass in arguent is gonna go in payload(default by toolkit)
   };
 
   return (
